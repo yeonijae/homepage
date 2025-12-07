@@ -18,18 +18,50 @@ export default function NewBlogPostPage() {
     const [tags, setTags] = useState('');
     const [content, setContent] = useState('');
     const [isPreview, setIsPreview] = useState(false);
+    const [isSaving, setIsSaving] = useState(false);
 
-    const handleSave = (publish: boolean) => {
-        // TODO: Supabase 연동 시 구현
-        const postData = {
-            title,
-            category,
-            tags: tags.split(',').map(t => t.trim()).filter(Boolean),
-            content,
-            status: publish ? 'published' : 'draft',
-        };
-        console.log('Post data:', postData);
-        alert(publish ? '발행되었습니다 (데모)' : '임시저장되었습니다 (데모)');
+    const handleSave = async (publish: boolean) => {
+        if (!title.trim()) {
+            alert('제목을 입력해주세요.');
+            return;
+        }
+        if (!content.trim()) {
+            alert('내용을 입력해주세요.');
+            return;
+        }
+
+        setIsSaving(true);
+
+        try {
+            const response = await fetch('/api/blog', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    title,
+                    category,
+                    tags: tags.split(',').map(t => t.trim()).filter(Boolean),
+                    content,
+                    isPublished: publish,
+                }),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert(result.message);
+                // 저장 후 목록으로 이동
+                window.location.href = '/admin/blog';
+            } else {
+                alert(result.error || '저장 중 오류가 발생했습니다.');
+            }
+        } catch (error) {
+            console.error('Save error:', error);
+            alert('저장 중 오류가 발생했습니다.');
+        } finally {
+            setIsSaving(false);
+        }
     };
 
     return (
@@ -46,20 +78,23 @@ export default function NewBlogPostPage() {
                     <button
                         className={styles.previewBtn}
                         onClick={() => setIsPreview(!isPreview)}
+                        disabled={isSaving}
                     >
                         {isPreview ? '편집' : '미리보기'}
                     </button>
                     <button
                         className={styles.saveBtn}
                         onClick={() => handleSave(false)}
+                        disabled={isSaving}
                     >
-                        임시저장
+                        {isSaving ? '저장 중...' : '임시저장'}
                     </button>
                     <button
                         className={styles.publishBtn}
                         onClick={() => handleSave(true)}
+                        disabled={isSaving}
                     >
-                        발행하기
+                        {isSaving ? '저장 중...' : '발행하기'}
                     </button>
                 </div>
             </div>
