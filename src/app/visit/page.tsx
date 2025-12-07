@@ -3,24 +3,38 @@ import Navigation from "@/components/common/Navigation";
 import Footer from "@/components/common/Footer";
 import styles from "./page.module.css";
 
-// 인테리어 갤러리 데이터
-const GALLERY_IMAGES = [
-    { src: '/images/clinic/entrance.jpg', alt: '한의원 입구', caption: '연이재 입구' },
-    { src: '/images/clinic/lobby.jpg', alt: '로비 및 대기실', caption: '로비' },
-    { src: '/images/clinic/waiting-area.jpg', alt: '대기 공간', caption: '대기실' },
-    { src: '/images/clinic/reception.jpg', alt: '접수대', caption: '접수대' },
-    { src: '/images/clinic/consultation-room.jpg', alt: '진료실', caption: '진료실' },
-    { src: '/images/clinic/consultation-room-2.jpg', alt: '상담실', caption: '상담실' },
-    { src: '/images/clinic/treatment-room.jpg', alt: '치료실', caption: '치료실' },
-    { src: '/images/clinic/detail.jpg', alt: '인테리어 디테일', caption: '디테일' },
-];
-
 export const metadata = {
     title: "내원 안내 | 연이재한의원",
     description: "연이재한의원 오시는 길, 진료시간, 주차 안내 등 내원에 필요한 정보를 안내합니다.",
 };
 
-export default function VisitPage() {
+// 갤러리 이미지 가져오기 (서버 컴포넌트)
+async function getGalleryImages() {
+    try {
+        const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+        const response = await fetch(`${baseUrl}/api/gallery`, {
+            cache: 'no-store', // 항상 최신 데이터 가져오기
+        });
+
+        if (response.ok) {
+            const { data } = await response.json();
+            return data.map((img: { id: number; src: string; alt: string; caption: string }) => ({
+                src: img.src,
+                alt: img.alt || '',
+                caption: img.caption || '',
+            }));
+        }
+    } catch (error) {
+        console.error('Failed to load gallery images:', error);
+    }
+
+    // API 실패 시 빈 배열 반환
+    return [];
+}
+
+export default async function VisitPage() {
+    const galleryImages = await getGalleryImages();
+
     return (
         <main>
             <Navigation />
@@ -45,22 +59,28 @@ export default function VisitPage() {
                         따뜻하고 편안한 공간에서 정성스러운 진료를 받으실 수 있습니다
                     </p>
 
-                    <div className={styles.galleryGrid}>
-                        {GALLERY_IMAGES.map((image, index) => (
-                            <div key={index} className={styles.galleryItem}>
-                                <div className={styles.imageWrapper}>
-                                    <Image
-                                        src={image.src}
-                                        alt={image.alt}
-                                        width={600}
-                                        height={400}
-                                        className={styles.galleryImage}
-                                    />
+                    {galleryImages.length > 0 ? (
+                        <div className={styles.galleryGrid}>
+                            {galleryImages.map((image: { src: string; alt: string; caption: string }, index: number) => (
+                                <div key={index} className={styles.galleryItem}>
+                                    <div className={styles.imageWrapper}>
+                                        <Image
+                                            src={image.src}
+                                            alt={image.alt}
+                                            width={600}
+                                            height={400}
+                                            className={styles.galleryImage}
+                                        />
+                                    </div>
+                                    <p className={styles.imageCaption}>{image.caption}</p>
                                 </div>
-                                <p className={styles.imageCaption}>{image.caption}</p>
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className={styles.emptyGallery}>
+                            <p>갤러리 이미지가 준비 중입니다.</p>
+                        </div>
+                    )}
                 </div>
             </section>
 
