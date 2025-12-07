@@ -23,6 +23,7 @@
     color: var(--color-accent);
     letter-spacing: 2px;
     text-decoration: none;
+    z-index: 101;
 }
 
 .links {
@@ -32,6 +33,95 @@
     letter-spacing: var(--letter-spacing-tight);
 }
 
+/* 햄버거 버튼 - 데스크톱에서는 숨김 */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 101;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-accent);
+    margin: 3px 0;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* 모바일 메뉴 오버레이 */
+.mobileMenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--color-background);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobileMenu.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobileMenuContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 24px;
+}
+
+.mobileLink {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    color: var(--color-text);
+    text-decoration: none;
+    padding: 12px 20px;
+    transition: color 0.3s ease;
+}
+
+.mobileLink:hover {
+    color: var(--color-primary);
+}
+
+.mobileReserveBtn {
+    margin-top: 20px;
+    padding: 16px 48px;
+    background: var(--gradient-button);
+    color: white;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+/* 모바일 반응형 */
 @media (max-width: 768px) {
     .nav {
         padding: 15px 20px;
@@ -39,5 +129,9 @@
 
     .links {
         display: none;
+    }
+
+    .hamburger {
+        display: flex;
     }
 }
