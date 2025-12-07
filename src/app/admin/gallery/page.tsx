@@ -123,52 +123,21 @@ export default function AdminGalleryPage() {
         }
     };
 
-    // 파일 업로드 처리 (이미지 리사이즈)
+    // 파일 업로드 처리
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (!file) return;
 
-        // 파일 크기 체크 (5MB 제한)
-        if (file.size > 5 * 1024 * 1024) {
-            alert('이미지 크기는 5MB 이하여야 합니다.');
+        // 파일 크기 체크 (500KB 제한 - Base64 인코딩 시 약 30% 증가)
+        const maxSize = 500 * 1024; // 500KB
+        if (file.size > maxSize) {
+            alert(`이미지 크기가 너무 큽니다.\n\n현재: ${(file.size / 1024).toFixed(0)}KB\n제한: 500KB\n\n더 작은 이미지를 사용하거나 이미지 압축 후 업로드해주세요.`);
             return;
         }
 
         const reader = new FileReader();
-        reader.onload = (event) => {
-            const img = new window.Image();
-            img.onload = () => {
-                // Canvas로 리사이즈
-                const canvas = document.createElement('canvas');
-                const MAX_WIDTH = 1200;
-                const MAX_HEIGHT = 800;
-
-                let width = img.width;
-                let height = img.height;
-
-                // 비율 유지하며 리사이즈
-                if (width > height) {
-                    if (width > MAX_WIDTH) {
-                        height = (height * MAX_WIDTH) / width;
-                        width = MAX_WIDTH;
-                    }
-                } else {
-                    if (height > MAX_HEIGHT) {
-                        width = (width * MAX_HEIGHT) / height;
-                        height = MAX_HEIGHT;
-                    }
-                }
-
-                canvas.width = width;
-                canvas.height = height;
-                const ctx = canvas.getContext('2d');
-                ctx?.drawImage(img, 0, 0, width, height);
-
-                // JPEG 압축 (품질 80%)
-                const resizedDataUrl = canvas.toDataURL('image/jpeg', 0.8);
-                setUploadPreview(resizedDataUrl);
-            };
-            img.src = event.target?.result as string;
+        reader.onloadend = () => {
+            setUploadPreview(reader.result as string);
         };
         reader.readAsDataURL(file);
     };
