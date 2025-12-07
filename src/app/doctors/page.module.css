@@ -1,0 +1,353 @@
+/* ===================================
+   Doctors Page Styles
+   =================================== */
+
+/* Hero Section */
+.hero {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--gradient-hero);
+    padding: 120px 20px 80px;
+}
+
+.heroContent {
+    max-width: var(--text-max-width);
+}
+
+.label {
+    font-size: var(--text-micro);
+    letter-spacing: var(--letter-spacing-widest);
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: var(--text-h1);
+    color: var(--color-text);
+    margin-bottom: 30px;
+}
+
+.subtitle {
+    font-size: var(--text-body-large);
+    color: var(--color-text-light);
+    line-height: var(--line-height-relaxed);
+}
+
+/* Container */
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Profile Section */
+.profile {
+    padding: var(--section-padding) 20px;
+    background: var(--color-surface);
+}
+
+.profileGrid {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: var(--gap-xlarge);
+    align-items: start;
+}
+
+.imageWrapper {
+    position: sticky;
+    top: 120px;
+}
+
+.imagePlaceholder {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: var(--color-background);
+    border-radius: var(--radius-small);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagePlaceholderText {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+.doctorImage {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-small);
+    box-shadow: var(--shadow-large);
+}
+
+.info {
+    padding-top: 20px;
+}
+
+.position {
+    font-size: var(--text-tiny);
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.name {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    color: var(--color-text);
+    margin-bottom: 40px;
+}
+
+.philosophy {
+    margin-bottom: 50px;
+    padding-left: 20px;
+    border-left: 2px solid var(--color-secondary);
+}
+
+.philosophy p {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    color: var(--color-text);
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.credentials {
+    margin-bottom: 40px;
+}
+
+.credentials h3,
+.specialties h3 {
+    font-size: var(--text-small);
+    letter-spacing: var(--letter-spacing-normal);
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.credentials ul {
+    list-style: none;
+}
+
+.credentials li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-background);
+    font-size: var(--text-body);
+    color: var(--color-text);
+    position: relative;
+    padding-left: 20px;
+}
+
+.credentials li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--color-secondary);
+    border-radius: 50%;
+}
+
+.specialties {
+    margin-bottom: 40px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--color-background);
+    color: var(--color-text);
+    font-size: var(--text-small);
+    border-radius: 30px;
+    transition: all var(--transition-fast);
+}
+
+.tag:hover {
+    background: var(--color-primary);
+    color: var(--color-text-on-dark);
+}
+
+/* Message Section */
+.message {
+    padding: var(--section-padding) 20px;
+    background: var(--color-background);
+}
+
+.sectionTitle {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gradient-divider);
+    margin: 0 auto 60px;
+}
+
+.messageContent {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+}
+
+.messageContent p {
+    font-size: var(--text-body);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text);
+    margin-bottom: 30px;
+    text-indent: 1em;
+}
+
+.messageContent p:first-child {
+    font-size: var(--text-body-large);
+    text-indent: 0;
+}
+
+.signature {
+    text-align: right;
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    margin-top: 50px;
+    text-indent: 0 !important;
+}
+
+/* Approach Section */
+.approach {
+    padding: var(--section-padding) 20px;
+    background: var(--gradient-dark);
+}
+
+.sectionTitleLight {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--color-text-on-dark);
+}
+
+.dividerLight {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    margin: 0 auto 60px;
+}
+
+.approachGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap-medium);
+}
+
+.approachCard {
+    text-align: center;
+    padding: var(--gap-large) var(--gap-medium);
+}
+
+.approachIcon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 30px;
+}
+
+.approachIcon svg {
+    width: 100%;
+    height: 100%;
+    stroke: var(--color-secondary);
+}
+
+.approachCard h3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    color: var(--color-text-on-dark);
+    margin-bottom: 20px;
+}
+
+.approachCard p {
+    font-size: var(--text-body);
+    color: var(--color-text-on-dark-muted);
+    line-height: 1.8;
+}
+
+/* CTA Section */
+.cta {
+    padding: var(--section-padding-small) 20px;
+    background: var(--color-surface);
+    text-align: center;
+}
+
+.ctaText {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    color: var(--color-text);
+    margin-bottom: 40px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .profileGrid {
+        grid-template-columns: 300px 1fr;
+        gap: var(--gap-large);
+    }
+
+    .name {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .profileGrid {
+        grid-template-columns: 1fr;
+        gap: var(--gap-medium);
+    }
+
+    .imageWrapper {
+        position: static;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .info {
+        text-align: center;
+    }
+
+    .philosophy {
+        border-left: none;
+        padding-left: 0;
+        border-top: 2px solid var(--color-secondary);
+        padding-top: 20px;
+    }
+
+    .credentials li {
+        padding-left: 0;
+        text-align: left;
+    }
+
+    .credentials li::before {
+        display: none;
+    }
+
+    .tags {
+        justify-content: center;
+    }
+
+    .approachGrid {
+        grid-template-columns: 1fr;
+    }
+}

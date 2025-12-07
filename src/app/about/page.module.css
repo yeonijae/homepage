@@ -1,0 +1,295 @@
+/* ===================================
+   About Page Styles
+   =================================== */
+
+/* Hero Section */
+.hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--gradient-hero);
+    padding: 120px 20px 80px;
+    position: relative;
+}
+
+.heroContent {
+    max-width: var(--text-max-width);
+}
+
+.label {
+    font-size: var(--text-micro);
+    letter-spacing: var(--letter-spacing-widest);
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: var(--text-h1);
+    color: var(--color-text);
+    margin-bottom: 30px;
+}
+
+.subtitle {
+    font-size: var(--text-body-large);
+    color: var(--color-text-light);
+    line-height: var(--line-height-relaxed);
+}
+
+/* Container */
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Mission Section */
+.mission {
+    padding: var(--section-padding) 20px;
+    background: var(--color-surface);
+}
+
+.missionGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap-medium);
+}
+
+.missionCard {
+    text-align: center;
+    padding: var(--gap-large) var(--gap-medium);
+    border-right: 1px solid var(--color-background-dark);
+}
+
+.missionCard:last-child {
+    border-right: none;
+}
+
+.missionLabel {
+    font-size: var(--text-tiny);
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-primary);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.missionText {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+/* Story Section */
+.story {
+    padding: var(--section-padding) 20px;
+    background: var(--color-background);
+}
+
+.sectionTitle {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gradient-divider);
+    margin: 0 auto 60px;
+}
+
+.storyContent {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+}
+
+.storyContent p {
+    font-size: var(--text-body);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text);
+    margin-bottom: 30px;
+    text-indent: 1em;
+}
+
+.storyContent p:first-child {
+    font-size: var(--text-body-large);
+    text-indent: 0;
+    color: var(--color-primary);
+}
+
+/* Pillars Section */
+.pillars {
+    padding: var(--section-padding) 20px;
+    background: var(--gradient-dark);
+}
+
+.pillars .sectionTitle {
+    color: var(--color-text-on-dark);
+}
+
+.pillarsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+}
+
+.pillarCard {
+    padding: var(--gap-large) var(--gap-medium);
+    text-align: center;
+    position: relative;
+}
+
+.pillarCard::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.pillarCard:last-child::after {
+    display: none;
+}
+
+.pillarNumber {
+    font-size: var(--text-micro);
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-secondary);
+    margin-bottom: 20px;
+}
+
+.pillarTitle {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    color: var(--color-text-on-dark);
+    margin-bottom: 20px;
+}
+
+.pillarDesc {
+    font-size: var(--text-small);
+    color: var(--color-text-on-dark-muted);
+    line-height: 1.8;
+}
+
+/* Clinic Info Section */
+.clinicInfo {
+    padding: var(--section-padding) 20px;
+    background: var(--color-background-alt);
+}
+
+.infoGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-large);
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+}
+
+.infoCard {
+    background: var(--color-surface);
+    padding: var(--gap-large);
+    border-radius: var(--radius-small);
+    box-shadow: var(--shadow-soft);
+}
+
+.infoCard h3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    color: var(--color-text);
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--color-background-dark);
+}
+
+.infoList {
+    list-style: none;
+}
+
+.infoList li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-background);
+    font-size: var(--text-body);
+    color: var(--color-text);
+}
+
+.infoList li:last-child {
+    border-bottom: none;
+}
+
+.infoList li span {
+    color: var(--color-text-light);
+}
+
+.contactNumber {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.contactNote {
+    font-size: var(--text-small);
+    color: var(--color-text-light);
+    line-height: 1.8;
+}
+
+/* CTA Section */
+.cta {
+    padding: var(--section-padding-small) 20px;
+    background: var(--color-surface);
+    text-align: center;
+}
+
+.ctaText {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    color: var(--color-text);
+    margin-bottom: 40px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .pillarsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pillarCard:nth-child(2)::after {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .missionGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .missionCard {
+        border-right: none;
+        border-bottom: 1px solid var(--color-background-dark);
+        padding: var(--gap-medium);
+    }
+
+    .missionCard:last-child {
+        border-bottom: none;
+    }
+
+    .pillarsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .pillarCard::after {
+        display: none;
+    }
+
+    .infoGrid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,36 @@
+.promise {
+    padding: var(--section-padding) 20px;
+    background: var(--color-background);
+    text-align: center;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    font-weight: var(--font-weight-normal);
+    margin-bottom: 60px;
+    line-height: 1.5;
+}
+
+.blockquote {
+    font-size: clamp(24px, 4vw, 32px);
+    font-family: var(--font-heading);
+    color: var(--color-accent);
+    max-width: 600px;
+    margin: 0 auto 50px;
+    line-height: 1.6;
+}
+
+.desc {
+    font-size: var(--text-body);
+    line-height: var(--line-height-relaxed);
+    color: #5A5A5A;
+    max-width: 500px;
+    margin: 0 auto 60px;
+    font-weight: var(--font-weight-light);
+}
+
+.desc em {
+    color: var(--color-accent);
+    font-style: italic;
+}

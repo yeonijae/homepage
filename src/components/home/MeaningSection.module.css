@@ -1,0 +1,118 @@
+.meaning {
+    padding: var(--section-padding) 20px;
+    background: var(--gradient-dark);
+    color: var(--color-text-on-dark);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.bgLeft,
+.bgRight {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 200px;
+    font-family: var(--font-heading);
+    opacity: 0.03;
+    color: var(--color-text-on-dark);
+}
+
+.bgLeft {
+    left: 5%;
+}
+
+.bgRight {
+    right: 5%;
+}
+
+.label {
+    font-size: var(--text-tiny);
+    letter-spacing: var(--letter-spacing-wider);
+    color: var(--color-secondary);
+    margin-bottom: 20px;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    font-weight: var(--font-weight-normal);
+    margin-bottom: 60px;
+    line-height: 1.5;
+    color: var(--color-text-on-dark);
+}
+
+.chars {
+    display: flex;
+    justify-content: center;
+    gap: var(--gap-large);
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.char {
+    text-align: center;
+}
+
+.hanja {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    margin-bottom: 10px;
+    color: var(--color-secondary);
+}
+
+.hangul {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: var(--color-text-on-dark);
+}
+
+.charMeaning {
+    font-size: var(--text-tiny);
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-light);
+}
+
+.quote {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    color: var(--color-text-on-dark-muted);
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+.desc {
+    font-size: var(--text-body);
+    line-height: 2.3;
+    color: var(--color-text-on-dark-subtle);
+    max-width: 550px;
+    margin: 0 auto 30px;
+    font-weight: var(--font-weight-light);
+}
+
+.box {
+    background: rgba(196, 167, 125, 0.15);
+    padding: 30px 40px;
+    border-radius: var(--radius-small);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.box p:first-child {
+    font-size: var(--text-small);
+    color: var(--color-text-on-dark-muted);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.boxTitle {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    color: var(--color-text-on-dark);
+}
+
+@media (max-width: 768px) {
+    .chars {
+        gap: var(--gap-medium);
+    }
+}

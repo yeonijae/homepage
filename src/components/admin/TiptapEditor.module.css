@@ -1,0 +1,250 @@
+/* ===================================
+   Tiptap Editor Styles
+   =================================== */
+
+.editorWrapper {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+/* Toolbar */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 12px 16px;
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.toolGroup {
+    display: flex;
+    gap: 2px;
+    padding-right: 12px;
+    border-right: 1px solid #e5e7eb;
+}
+
+.toolGroup:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+
+.toolBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    color: #6b7280;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.toolBtn:hover:not(:disabled) {
+    background: #e5e7eb;
+    color: #1f2937;
+}
+
+.toolBtn.active {
+    background: #3b82f6;
+    color: white;
+}
+
+.toolBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Editor Content */
+.editorContent {
+    position: relative;
+    min-height: 400px;
+}
+
+.proseMirror {
+    padding: 24px;
+    min-height: 400px;
+    outline: none;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #1f2937;
+}
+
+.proseMirror:focus {
+    outline: none;
+}
+
+/* Typography */
+.proseMirror h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-top: 32px;
+    margin-bottom: 16px;
+}
+
+.proseMirror h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+.proseMirror h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #374151;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.proseMirror p {
+    margin-bottom: 16px;
+}
+
+.proseMirror strong {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.proseMirror em {
+    font-style: italic;
+}
+
+.proseMirror s {
+    text-decoration: line-through;
+    color: #9ca3af;
+}
+
+/* Lists */
+.proseMirror ul,
+.proseMirror ol {
+    padding-left: 24px;
+    margin-bottom: 16px;
+}
+
+.proseMirror li {
+    margin-bottom: 8px;
+}
+
+.proseMirror ul li {
+    list-style-type: disc;
+}
+
+.proseMirror ol li {
+    list-style-type: decimal;
+}
+
+/* Blockquote */
+.proseMirror blockquote {
+    margin: 24px 0;
+    padding: 16px 20px;
+    background: #f9fafb;
+    border-left: 4px solid #3b82f6;
+    border-radius: 4px;
+    font-style: italic;
+    color: #4b5563;
+}
+
+.proseMirror blockquote p {
+    margin-bottom: 0;
+}
+
+/* Links */
+.proseMirror a,
+.proseMirror :global(.editor-link) {
+    color: #3b82f6;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.proseMirror a:hover {
+    color: #2563eb;
+}
+
+/* Images */
+.proseMirror img,
+.proseMirror :global(.editor-image) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 16px 0;
+}
+
+/* Code */
+.proseMirror code {
+    background: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.9em;
+    color: #ef4444;
+}
+
+.proseMirror pre {
+    background: #1f2937;
+    color: #f9fafb;
+    padding: 16px 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 16px 0;
+}
+
+.proseMirror pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+}
+
+/* Horizontal Rule */
+.proseMirror hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 32px 0;
+}
+
+/* Placeholder */
+.placeholder {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    color: #9ca3af;
+    pointer-events: none;
+}
+
+.loading {
+    padding: 24px;
+    color: #9ca3af;
+    text-align: center;
+}
+
+/* Focus states */
+.editorWrapper:focus-within {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .toolbar {
+        padding: 8px 12px;
+    }
+
+    .toolBtn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .proseMirror {
+        padding: 16px;
+        min-height: 300px;
+    }
+}

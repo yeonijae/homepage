@@ -1,0 +1,93 @@
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0 20px;
+    background: var(--gradient-hero);
+}
+
+.deco1 {
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196, 167, 125, 0.1) 0%, transparent 70%);
+}
+
+.deco2 {
+    position: absolute;
+    bottom: 20%;
+    left: 5%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139, 115, 85, 0.08) 0%, transparent 70%);
+    animation-delay: -3s;
+}
+
+.sideText {
+    position: absolute;
+    left: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-text-muted);
+}
+
+.subtitle {
+    font-size: var(--text-small);
+    letter-spacing: var(--letter-spacing-widest);
+    color: var(--color-primary);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: var(--text-hero);
+    font-weight: var(--font-weight-normal);
+    text-align: center;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    color: var(--color-text);
+}
+
+.desc {
+    font-size: 16px;
+    color: var(--color-text-light);
+    text-align: center;
+    max-width: 400px;
+    line-height: 2;
+    margin-top: 30px;
+    font-weight: var(--font-weight-light);
+}
+
+.scrollIndicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.scrollIndicator span {
+    font-size: var(--text-micro);
+    letter-spacing: 3px;
+    color: var(--color-text-muted);
+}
+
+.line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--color-text-muted), transparent);
+    animation: float 2s ease-in-out infinite;
+}

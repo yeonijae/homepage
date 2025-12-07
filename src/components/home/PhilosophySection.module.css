@@ -1,0 +1,73 @@
+.philosophy {
+    padding: var(--section-padding-small) 20px;
+    background: var(--gradient-section);
+    position: relative;
+}
+
+.grid {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--gap-xlarge);
+    align-items: center;
+}
+
+.handCircle {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-background) 0%, var(--color-background-alt) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow-large);
+    position: relative;
+    margin: 0 auto;
+    animation: handPulse 2s ease-in-out infinite;
+}
+
+@keyframes handPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.pulseRing {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid rgba(196, 167, 125, 0.3);
+}
+
+.content {
+    text-align: left;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    font-weight: var(--font-weight-normal);
+    margin-bottom: 40px;
+    line-height: 1.5;
+}
+
+.text {
+    font-size: var(--text-body);
+    line-height: 2.3;
+    color: #5A5A5A;
+    margin-bottom: 25px;
+    font-weight: var(--font-weight-light);
+}
+
+.text strong {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-accent);
+}

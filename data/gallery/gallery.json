@@ -1,0 +1,60 @@
+{
+    "images": [
+        {
+            "id": "1",
+            "src": "/images/clinic/entrance.jpg",
+            "alt": "한의원 입구",
+            "caption": "연이재 입구",
+            "order": 1
+        },
+        {
+            "id": "2",
+            "src": "/images/clinic/lobby.jpg",
+            "alt": "로비 및 대기실",
+            "caption": "로비",
+            "order": 2
+        },
+        {
+            "id": "3",
+            "src": "/images/clinic/waiting-area.jpg",
+            "alt": "대기 공간",
+            "caption": "대기실",
+            "order": 3
+        },
+        {
+            "id": "4",
+            "src": "/images/clinic/reception.jpg",
+            "alt": "접수대",
+            "caption": "접수대",
+            "order": 4
+        },
+        {
+            "id": "5",
+            "src": "/images/clinic/consultation-room.jpg",
+            "alt": "진료실",
+            "caption": "진료실",
+            "order": 5
+        },
+        {
+            "id": "6",
+            "src": "/images/clinic/consultation-room-2.jpg",
+            "alt": "상담실",
+            "caption": "상담실",
+            "order": 6
+        },
+        {
+            "id": "7",
+            "src": "/images/clinic/treatment-room.jpg",
+            "alt": "치료실",
+            "caption": "치료실",
+            "order": 7
+        },
+        {
+            "id": "8",
+            "src": "/images/clinic/detail.jpg",
+            "alt": "인테리어 디테일",
+            "caption": "디테일",
+            "order": 8
+        }
+    ]
+}

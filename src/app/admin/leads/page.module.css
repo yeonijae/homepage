@@ -1,0 +1,725 @@
+/* ===================================
+   Leads (CRM) Page Styles - Light Theme
+   With Timeline View
+   =================================== */
+
+.leadsPage {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: calc(100vh - 120px);
+}
+
+/* Page Header */
+.pageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.headerLeft h1 {
+    color: #1f2937;
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.headerLeft p {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.headerRight {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* View Toggle */
+.viewToggle {
+    display: flex;
+    background: #f3f4f6;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.viewBtn {
+    background: transparent;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.viewBtn.active {
+    background: #ffffff;
+    color: #1f2937;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.viewBtn:hover:not(.active) {
+    color: #1f2937;
+}
+
+.searchBox {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 0 12px;
+}
+
+.searchIcon {
+    font-size: 0.9rem;
+    margin-right: 8px;
+}
+
+.searchInput {
+    background: none;
+    border: none;
+    color: #1f2937;
+    font-size: 0.9rem;
+    padding: 10px 0;
+    width: 200px;
+    outline: none;
+}
+
+.searchInput::placeholder {
+    color: #9ca3af;
+}
+
+.addBtn {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.addBtn:hover {
+    background: #2563eb;
+}
+
+/* ===================================
+   Timeline View Styles
+   =================================== */
+
+.timelineContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+}
+
+/* Stage Header */
+.stageHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 24px;
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.stageHeaderItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+}
+
+.stageIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.stageName {
+    font-size: 0.8rem;
+    color: #374151;
+    font-weight: 500;
+}
+
+.stageConnector {
+    position: absolute;
+    top: 20px;
+    left: calc(50% + 24px);
+    width: calc(100% - 48px);
+    height: 2px;
+    background: #e5e7eb;
+}
+
+/* Patient List */
+.patientList {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.patientRow {
+    display: grid;
+    grid-template-columns: 180px 1fr 200px;
+    gap: 16px;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid #f3f4f6;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.patientRow:hover {
+    background: #f9fafb;
+}
+
+.patientRow.highPriority {
+    border-left: 3px solid #ef4444;
+}
+
+/* Patient Info */
+.patientInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.patientName {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    color: #1f2937;
+    font-size: 0.95rem;
+}
+
+.patientCondition {
+    color: #3b82f6;
+    font-size: 0.8rem;
+}
+
+.priorityBadge {
+    font-size: 0.7rem;
+}
+
+/* Timeline Track */
+.timelineTrack {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.timelineCell {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.connector {
+    position: absolute;
+    top: 12px;
+    right: 50%;
+    width: 100%;
+    height: 2px;
+    background: #e5e7eb;
+    z-index: 0;
+}
+
+.connector.filled {
+    background: #22c55e;
+}
+
+.timelineNode {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #e5e7eb;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    z-index: 1;
+    transition: all 0.2s;
+}
+
+.timelineNode.completed {
+    color: #22c55e;
+    border-color: #22c55e;
+    font-size: 0.65rem;
+}
+
+.timelineNode.current {
+    color: white;
+    transform: scale(1.1);
+    font-size: 0.5rem;
+}
+
+.timelineNode.empty {
+    border-style: dashed;
+}
+
+.eventInfo {
+    position: absolute;
+    top: 28px;
+    text-align: center;
+}
+
+.eventDate {
+    font-size: 0.7rem;
+    color: #6b7280;
+    white-space: nowrap;
+}
+
+/* Last Activity */
+.lastActivity {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: right;
+}
+
+.lastAction {
+    font-size: 0.8rem;
+    color: #6b7280;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.lastDate {
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+/* ===================================
+   Kanban Board Styles
+   =================================== */
+
+.kanbanBoard {
+    display: flex;
+    gap: 16px;
+    flex: 1;
+    overflow-x: auto;
+    padding-bottom: 16px;
+}
+
+.kanbanColumn {
+    flex: 1;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.columnHeader {
+    padding: 16px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.columnTitle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #1f2937;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.stageDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.columnCount {
+    background: #f3f4f6;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.columnContent {
+    flex: 1;
+    padding: 12px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #fafbfc;
+}
+
+/* Lead Card */
+.leadCard {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.leadCard:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+}
+
+.leadCard.highPriority {
+    border-left: 3px solid #ef4444;
+}
+
+.leadHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.leadName {
+    color: #1f2937;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.leadCondition {
+    color: #3b82f6;
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.leadNote {
+    color: #6b7280;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.leadFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leadTime {
+    color: #9ca3af;
+    font-size: 0.75rem;
+}
+
+.emptyColumn {
+    text-align: center;
+    color: #9ca3af;
+    padding: 32px;
+    font-size: 0.85rem;
+}
+
+/* ===================================
+   Modal Styles
+   =================================== */
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: #ffffff;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 560px;
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.modalHeader h2 {
+    color: #1f2937;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.modalCondition {
+    color: #3b82f6;
+    font-size: 0.85rem;
+}
+
+.closeBtn {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.closeBtn:hover {
+    color: #1f2937;
+}
+
+.modalContent {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+}
+
+/* Patient Details */
+.patientDetails {
+    margin-bottom: 24px;
+}
+
+.detailRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.detailLabel {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.detailValue {
+    color: #1f2937;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.stageBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Detail Timeline */
+.detailTimeline {
+    margin-top: 24px;
+}
+
+.detailTimeline h3 {
+    color: #1f2937;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.timelineList {
+    display: flex;
+    flex-direction: column;
+}
+
+.timelineItem {
+    display: flex;
+    gap: 16px;
+    position: relative;
+    padding-bottom: 24px;
+}
+
+.timelineItem:last-child {
+    padding-bottom: 0;
+}
+
+.timelineDot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.timelineLine {
+    position: absolute;
+    left: 17px;
+    top: 40px;
+    width: 2px;
+    height: calc(100% - 40px);
+    background: #e5e7eb;
+}
+
+.timelineContent {
+    flex: 1;
+    padding-top: 6px;
+}
+
+.timelineTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.timelineStage {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.timelineDate {
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+.timelineAction {
+    color: #1f2937;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.timelineNote {
+    color: #6b7280;
+    font-size: 0.85rem;
+    background: #f9fafb;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+
+.modalActions {
+    display: flex;
+    gap: 8px;
+    padding: 16px 24px 24px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.actionBtn {
+    flex: 1;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    color: #6b7280;
+    padding: 12px 8px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.actionBtn:hover {
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+.actionBtnPrimary {
+    flex: 1.5;
+    background: #3b82f6;
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.actionBtnPrimary:hover {
+    background: #2563eb;
+}
+
+/* Responsive */
+@media (max-width: 1280px) {
+    .kanbanColumn {
+        min-width: 240px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .patientRow {
+        grid-template-columns: 140px 1fr 150px;
+    }
+
+    .stageHeader {
+        padding: 16px;
+    }
+
+    .stageIcon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+
+    .stageName {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .pageHeader {
+        flex-direction: column;
+    }
+
+    .headerRight {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .patientRow {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .timelineTrack {
+        display: none;
+    }
+
+    .lastActivity {
+        text-align: left;
+    }
+}

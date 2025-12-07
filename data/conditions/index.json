@@ -1,0 +1,367 @@
+{
+    "conditions": [
+        {
+            "slug": "dysmenorrhea",
+            "name": "생리통",
+            "nameEn": "Dysmenorrhea",
+            "category": "womens-health",
+            "theme": "womens-health"
+        },
+        {
+            "slug": "irregular-menstruation",
+            "name": "생리불순",
+            "nameEn": "Irregular Menstruation",
+            "category": "womens-health",
+            "theme": "womens-health"
+        },
+        {
+            "slug": "pcos",
+            "name": "다낭성난소증후군",
+            "nameEn": "PCOS",
+            "category": "womens-health",
+            "theme": "womens-health"
+        },
+        {
+            "slug": "uterine-fibroid",
+            "name": "자궁근종",
+            "nameEn": "Uterine Fibroid",
+            "category": "womens-health",
+            "theme": "womens-health"
+        },
+        {
+            "slug": "adenomyosis",
+            "name": "자궁선근증",
+            "nameEn": "Adenomyosis",
+            "category": "womens-health",
+            "theme": "womens-health"
+        },
+        {
+            "slug": "menopause",
+            "name": "갱년기증후군",
+            "nameEn": "Menopause Syndrome",
+            "category": "womens-health",
+            "theme": "womens-health"
+        },
+        {
+            "slug": "thyroid",
+            "name": "갑상선 기능이상",
+            "nameEn": "Thyroid Dysfunction",
+            "category": "womens-health",
+            "theme": "womens-health"
+        },
+        {
+            "slug": "infertility",
+            "name": "난임 클리닉",
+            "nameEn": "Infertility Clinic",
+            "category": "infertility",
+            "isClusterHub": true,
+            "theme": "infertility"
+        },
+        {
+            "slug": "couple-preparation",
+            "name": "부부 임신준비",
+            "nameEn": "Couple Pregnancy Preparation",
+            "category": "infertility",
+            "cluster": "infertility",
+            "theme": "infertility"
+        },
+        {
+            "slug": "female-infertility",
+            "name": "여성 난임",
+            "nameEn": "Female Infertility",
+            "category": "infertility",
+            "cluster": "infertility",
+            "theme": "infertility"
+        },
+        {
+            "slug": "male-infertility",
+            "name": "남성 난임",
+            "nameEn": "Male Infertility",
+            "category": "infertility",
+            "cluster": "infertility",
+            "theme": "infertility"
+        },
+        {
+            "slug": "ivf-support",
+            "name": "시험관 시술 병행 치료",
+            "nameEn": "IVF Support",
+            "category": "infertility",
+            "cluster": "infertility",
+            "theme": "infertility"
+        },
+        {
+            "slug": "pregnancy-care",
+            "name": "임신 유지 & 유산 후 회복",
+            "nameEn": "Pregnancy Care",
+            "category": "infertility",
+            "cluster": "infertility",
+            "theme": "infertility"
+        },
+        {
+            "slug": "postpartum",
+            "name": "산후케어 센터",
+            "nameEn": "Postpartum Care Center",
+            "category": "postpartum",
+            "isClusterHub": true,
+            "theme": "postpartum"
+        },
+        {
+            "slug": "postpartum-tonic",
+            "name": "산후보약",
+            "nameEn": "Postpartum Tonic",
+            "category": "postpartum",
+            "cluster": "postpartum",
+            "theme": "postpartum"
+        },
+        {
+            "slug": "postpartum-wind",
+            "name": "산후풍",
+            "nameEn": "Postpartum Wind Syndrome",
+            "category": "postpartum",
+            "cluster": "postpartum",
+            "theme": "postpartum"
+        },
+        {
+            "slug": "postpartum-depression",
+            "name": "산후우울·정서",
+            "nameEn": "Postpartum Depression",
+            "category": "postpartum",
+            "cluster": "postpartum",
+            "theme": "postpartum"
+        },
+        {
+            "slug": "postpartum-bodycare",
+            "name": "산후체형교정",
+            "nameEn": "Postpartum Body Care",
+            "category": "postpartum",
+            "cluster": "postpartum",
+            "theme": "postpartum"
+        },
+        {
+            "slug": "postpartum-diet",
+            "name": "산후다이어트",
+            "nameEn": "Postpartum Diet",
+            "category": "postpartum",
+            "cluster": "postpartum",
+            "theme": "postpartum"
+        },
+        {
+            "slug": "parenting-syndrome",
+            "name": "육아증후군",
+            "nameEn": "Parenting Syndrome",
+            "category": "postpartum",
+            "cluster": "postpartum",
+            "theme": "postpartum"
+        },
+        {
+            "slug": "growth-tonic",
+            "name": "성장 보약",
+            "nameEn": "Growth Tonic",
+            "category": "pediatric",
+            "theme": "pediatric"
+        },
+        {
+            "slug": "precocious-puberty",
+            "name": "성조숙증",
+            "nameEn": "Precocious Puberty",
+            "category": "pediatric",
+            "theme": "pediatric"
+        },
+        {
+            "slug": "child-immunity",
+            "name": "면역력 보강",
+            "nameEn": "Child Immunity",
+            "category": "pediatric",
+            "theme": "pediatric"
+        },
+        {
+            "slug": "concentration",
+            "name": "총명 클리닉",
+            "nameEn": "Concentration Clinic",
+            "category": "pediatric",
+            "theme": "pediatric"
+        },
+        {
+            "slug": "atopy",
+            "name": "아토피",
+            "nameEn": "Atopic Dermatitis",
+            "category": "skin",
+            "theme": "skin"
+        },
+        {
+            "slug": "psoriasis",
+            "name": "건선",
+            "nameEn": "Psoriasis",
+            "category": "skin",
+            "theme": "skin"
+        },
+        {
+            "slug": "urticaria",
+            "name": "두드러기",
+            "nameEn": "Urticaria",
+            "category": "skin",
+            "theme": "skin"
+        },
+        {
+            "slug": "eczema",
+            "name": "습진",
+            "nameEn": "Eczema",
+            "category": "skin",
+            "theme": "skin"
+        },
+        {
+            "slug": "dyshidrosis",
+            "name": "한포진",
+            "nameEn": "Dyshidrosis",
+            "category": "skin",
+            "theme": "skin"
+        },
+        {
+            "slug": "molluscum",
+            "name": "물사마귀",
+            "nameEn": "Molluscum",
+            "category": "skin",
+            "theme": "skin"
+        },
+        {
+            "slug": "hyperhidrosis",
+            "name": "다한증",
+            "nameEn": "Hyperhidrosis",
+            "category": "skin",
+            "theme": "skin"
+        },
+        {
+            "slug": "gerd",
+            "name": "역류성식도염",
+            "nameEn": "GERD",
+            "category": "digestive",
+            "theme": "digestive"
+        },
+        {
+            "slug": "chronic-gastritis",
+            "name": "만성위염",
+            "nameEn": "Chronic Gastritis",
+            "category": "digestive",
+            "theme": "digestive"
+        },
+        {
+            "slug": "leaky-gut",
+            "name": "장누수증후군",
+            "nameEn": "Leaky Gut Syndrome",
+            "category": "digestive",
+            "theme": "digestive"
+        },
+        {
+            "slug": "damjeok",
+            "name": "담적병",
+            "nameEn": "Damjeok",
+            "category": "digestive",
+            "theme": "digestive"
+        },
+        {
+            "slug": "ibs",
+            "name": "과민성대장증후군",
+            "nameEn": "IBS",
+            "category": "digestive",
+            "theme": "digestive"
+        },
+        {
+            "slug": "ulcerative-colitis",
+            "name": "궤양성대장염",
+            "nameEn": "Ulcerative Colitis",
+            "category": "digestive",
+            "theme": "digestive"
+        },
+        {
+            "slug": "crohns",
+            "name": "크론병",
+            "nameEn": "Crohn's Disease",
+            "category": "digestive",
+            "theme": "digestive"
+        },
+        {
+            "slug": "overactive-bladder",
+            "name": "과민성방광",
+            "nameEn": "Overactive Bladder",
+            "category": "urology",
+            "theme": "urology"
+        },
+        {
+            "slug": "incontinence",
+            "name": "요실금",
+            "nameEn": "Urinary Incontinence",
+            "category": "urology",
+            "theme": "urology"
+        },
+        {
+            "slug": "prostate",
+            "name": "전립선비대증",
+            "nameEn": "Prostate Enlargement",
+            "category": "urology",
+            "theme": "urology"
+        },
+        {
+            "slug": "insomnia",
+            "name": "불면",
+            "nameEn": "Insomnia",
+            "category": "neuro",
+            "theme": "neuro"
+        },
+        {
+            "slug": "sleep-quality",
+            "name": "수면 질저하",
+            "nameEn": "Poor Sleep Quality",
+            "category": "neuro",
+            "theme": "neuro"
+        },
+        {
+            "slug": "headache",
+            "name": "두통",
+            "nameEn": "Headache",
+            "category": "neuro",
+            "theme": "neuro"
+        },
+        {
+            "slug": "dizziness",
+            "name": "어지럼",
+            "nameEn": "Dizziness",
+            "category": "neuro",
+            "theme": "neuro"
+        },
+        {
+            "slug": "bppv",
+            "name": "이석증",
+            "nameEn": "BPPV",
+            "category": "neuro",
+            "theme": "neuro"
+        },
+        {
+            "slug": "tinnitus",
+            "name": "이명",
+            "nameEn": "Tinnitus",
+            "category": "neuro",
+            "theme": "neuro"
+        },
+        {
+            "slug": "diet",
+            "name": "한방 다이어트",
+            "nameEn": "Korean Medicine Diet",
+            "category": "diet",
+            "theme": "diet"
+        },
+        {
+            "slug": "body-correction",
+            "name": "체형교정",
+            "nameEn": "Body Correction",
+            "category": "diet",
+            "theme": "diet"
+        },
+        {
+            "slug": "traffic-accident",
+            "name": "교통사고 후유증",
+            "nameEn": "Traffic Accident Aftereffects",
+            "category": "traffic",
+            "theme": "traffic"
+        }
+    ]
+}

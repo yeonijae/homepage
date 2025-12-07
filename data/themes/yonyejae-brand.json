@@ -1,0 +1,189 @@
+{
+  "id": "yonyejae-brand",
+  "name": "연이재 브랜드",
+  "description": "연이재한의원 공식 브랜드 테마 - 고급스럽고 따뜻한 한의원 느낌",
+  
+  "colors": {
+    "primary": "#8B7355",
+    "primaryDark": "#6B5344",
+    "primaryLight": "#A69580",
+    "secondary": "#C4A77D",
+    "accent": "#5C4A3D",
+    
+    "background": "#FAF8F5",
+    "backgroundAlt": "#F5F0E8",
+    "backgroundDark": "#F0EBE3",
+    "backgroundDarker": "#E8E2D8",
+    
+    "surface": "#FFFFFF",
+    "surfaceDark": "#3D3D3D",
+    "surfaceAccent": "#4A3C32",
+    
+    "text": "#3D3D3D",
+    "textLight": "#6B6B6B",
+    "textLighter": "#7A7A7A",
+    "textMuted": "#A69580",
+    "textOnDark": "#FAF8F5",
+    "textOnDarkMuted": "#D4C4B0",
+    "textOnDarkSubtle": "#B0A090",
+    
+    "border": "#C4A77D",
+    "divider": "linear-gradient(90deg, transparent, #C4A77D, transparent)",
+    
+    "selection": {
+      "background": "#C4A77D",
+      "text": "#FFFFFF"
+    }
+  },
+  
+  "typography": {
+    "headingFont": "Gowun Batang, serif",
+    "bodyFont": "Noto Serif KR, Georgia, serif",
+    
+    "heroSize": "clamp(32px, 8vw, 72px)",
+    "h1Size": "clamp(28px, 5vw, 42px)",
+    "h2Size": "clamp(26px, 4vw, 38px)",
+    "h3Size": "24px",
+    "bodySize": "15px",
+    "bodyLarge": "17px",
+    "small": "14px",
+    "tiny": "13px",
+    "micro": "11px",
+    
+    "headingWeight": "400",
+    "bodyWeight": "300",
+    "strongWeight": "500",
+    
+    "lineHeight": {
+      "heading": "1.3",
+      "body": "2.2",
+      "relaxed": "2.4"
+    },
+    
+    "letterSpacing": {
+      "tight": "1px",
+      "normal": "2px",
+      "wide": "4px",
+      "wider": "6px",
+      "widest": "8px"
+    }
+  },
+  
+  "spacing": {
+    "sectionPadding": "150px",
+    "sectionPaddingSmall": "120px",
+    "containerMaxWidth": "1100px",
+    "contentMaxWidth": "900px",
+    "textMaxWidth": "600px",
+    
+    "gap": {
+      "small": "20px",
+      "medium": "40px",
+      "large": "60px",
+      "xlarge": "80px"
+    }
+  },
+  
+  "effects": {
+    "borderRadius": {
+      "small": "4px",
+      "medium": "8px",
+      "large": "16px",
+      "full": "50%"
+    },
+    
+    "shadow": {
+      "soft": "0 4px 20px rgba(0,0,0,0.08)",
+      "medium": "0 10px 30px rgba(107, 83, 68, 0.3)",
+      "large": "0 30px 60px rgba(92, 74, 61, 0.1)"
+    },
+    
+    "gradient": {
+      "hero": "linear-gradient(180deg, #FAF8F5 0%, #F5F0E8 100%)",
+      "section": "linear-gradient(180deg, #F0EBE3 0%, #E8E2D8 100%)",
+      "dark": "linear-gradient(180deg, #5C4A3D 0%, #4A3C32 100%)",
+      "button": "linear-gradient(135deg, #8B7355 0%, #6B5344 100%)",
+      "buttonHover": "linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)",
+      "brushStroke": "linear-gradient(90deg, transparent, rgba(196, 167, 125, 0.3), transparent)"
+    },
+    
+    "transition": {
+      "fast": "0.3s ease",
+      "medium": "0.4s ease",
+      "slow": "0.8s cubic-bezier(0.4, 0, 0.2, 1)"
+    },
+    
+    "blur": {
+      "nav": "blur(10px)"
+    }
+  },
+  
+  "animations": {
+    "float": {
+      "duration": "6s",
+      "timing": "ease-in-out",
+      "keyframes": "0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); }"
+    },
+    "pulseSoft": {
+      "duration": "3s",
+      "timing": "ease-in-out",
+      "keyframes": "0%, 100% { opacity: 0.6; } 50% { opacity: 1; }"
+    },
+    "handPulse": {
+      "duration": "2s",
+      "timing": "ease-in-out",
+      "keyframes": "0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); }"
+    },
+    "fadeInUp": {
+      "initial": "opacity: 0; transform: translateY(40px);",
+      "animate": "opacity: 1; transform: translateY(0);",
+      "duration": "0.8s",
+      "timing": "cubic-bezier(0.4, 0, 0.2, 1)"
+    }
+  },
+  
+  "components": {
+    "nav": {
+      "padding": "20px 40px",
+      "paddingMobile": "15px 20px",
+      "logoSize": "24px",
+      "linkGap": "40px",
+      "linkSize": "14px",
+      "scrolledBg": "rgba(250, 248, 245, 0.95)"
+    },
+    
+    "button": {
+      "paddingY": "16px",
+      "paddingX": "40px",
+      "fontSize": "15px",
+      "letterSpacing": "2px"
+    },
+    
+    "divider": {
+      "width": "60px",
+      "height": "1px"
+    },
+    
+    "card": {
+      "padding": "30px 40px",
+      "radius": "4px"
+    }
+  },
+  
+  "decorative": {
+    "grainOverlay": {
+      "opacity": "0.03"
+    },
+    "glowCircle": {
+      "small": "150px",
+      "medium": "200px",
+      "opacity": "0.08"
+    },
+    "hanjaSize": "200px",
+    "hanjaOpacity": "0.03"
+  },
+  
+  "breakpoints": {
+    "mobile": "768px"
+  }
+}

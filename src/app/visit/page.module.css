@@ -1,0 +1,515 @@
+/* ===================================
+   Visit Page Styles
+   =================================== */
+
+/* Hero Section */
+.hero {
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--gradient-hero);
+    padding: 120px 20px 80px;
+}
+
+.heroContent {
+    max-width: var(--text-max-width);
+}
+
+.label {
+    font-size: var(--text-micro);
+    letter-spacing: var(--letter-spacing-widest);
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.title {
+    font-family: var(--font-heading);
+    font-size: var(--text-h1);
+    color: var(--color-text);
+    margin-bottom: 30px;
+}
+
+.subtitle {
+    font-size: var(--text-body-large);
+    color: var(--color-text-light);
+    line-height: var(--line-height-relaxed);
+}
+
+/* Container */
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Gallery Section */
+.gallery {
+    padding: var(--section-padding) 20px;
+    background: var(--color-background);
+}
+
+.galleryIntro {
+    text-align: center;
+    font-size: var(--text-body-large);
+    color: var(--color-text-light);
+    margin-bottom: 50px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.galleryItem {
+    position: relative;
+}
+
+.galleryItem:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.imageWrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--radius-small);
+    box-shadow: var(--shadow-soft);
+}
+
+.galleryImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-medium);
+}
+
+.galleryItem:hover .galleryImage {
+    transform: scale(1.03);
+}
+
+.imageCaption {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    font-size: var(--text-small);
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px 15px;
+    border-radius: 4px;
+    backdrop-filter: blur(4px);
+}
+
+/* Location Section */
+.location {
+    padding: var(--section-padding) 20px;
+    background: var(--color-surface);
+}
+
+.locationGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap-xlarge);
+    align-items: start;
+}
+
+.mapWrapper {
+    position: sticky;
+    top: 100px;
+}
+
+.mapPlaceholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--color-background);
+    border-radius: var(--radius-small);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid var(--color-background-dark);
+}
+
+.mapPlaceholder span {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    color: var(--color-text-muted);
+}
+
+.mapPlaceholder p {
+    font-size: var(--text-small);
+    color: var(--color-text-lighter);
+}
+
+.locationInfo {
+    padding: 20px 0;
+}
+
+.infoTitle {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    color: var(--color-text);
+    margin-bottom: 40px;
+}
+
+.infoItem {
+    margin-bottom: 40px;
+}
+
+.infoItem h3 {
+    font-size: var(--text-tiny);
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.address {
+    font-size: var(--text-body-large);
+    color: var(--color-text);
+    line-height: 1.8;
+}
+
+.transportList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.transportItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background: var(--color-primary);
+    color: var(--color-text-on-dark);
+    font-size: var(--text-micro);
+    border-radius: 4px;
+    min-width: 60px;
+    text-align: center;
+}
+
+.transportItem p {
+    font-size: var(--text-body);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.highlight {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Hours Section */
+.hours {
+    padding: var(--section-padding) 20px;
+    background: var(--color-background);
+}
+
+.sectionTitle {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gradient-divider);
+    margin: 0 auto 60px;
+}
+
+.hoursGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap-large);
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+}
+
+.hoursCard {
+    background: var(--color-surface);
+    padding: var(--gap-large);
+    border-radius: var(--radius-small);
+    box-shadow: var(--shadow-soft);
+}
+
+.hoursTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.hoursTable tr {
+    border-bottom: 1px solid var(--color-background);
+}
+
+.hoursTable tr:last-child {
+    border-bottom: none;
+}
+
+.hoursTable td {
+    padding: 18px 0;
+}
+
+.day {
+    font-size: var(--text-body);
+    color: var(--color-text);
+}
+
+.time {
+    font-family: var(--font-heading);
+    font-size: var(--text-body-large);
+    color: var(--color-primary);
+    text-align: right;
+}
+
+.lunchRow .day,
+.lunchRow .time {
+    color: var(--color-text-light);
+}
+
+.closedRow .time {
+    color: var(--color-text-muted);
+}
+
+.noticeCard {
+    background: var(--color-surface);
+    padding: var(--gap-large);
+    border-radius: var(--radius-small);
+    box-shadow: var(--shadow-soft);
+}
+
+.noticeCard h3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    color: var(--color-text);
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--color-background);
+}
+
+.noticeCard ul {
+    list-style: none;
+}
+
+.noticeCard li {
+    font-size: var(--text-body);
+    color: var(--color-text);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-left: 15px;
+    border-left: 2px solid var(--color-secondary);
+}
+
+.noticeCard li:last-child {
+    margin-bottom: 0;
+}
+
+.noticeCard li strong {
+    display: block;
+    color: var(--color-text);
+    margin-bottom: 5px;
+}
+
+/* Contact Section */
+.contact {
+    padding: var(--section-padding) 20px;
+    background: var(--gradient-dark);
+}
+
+.sectionTitleLight {
+    font-family: var(--font-heading);
+    font-size: var(--text-h2);
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--color-text-on-dark);
+}
+
+.dividerLight {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    margin: 0 auto 60px;
+}
+
+.contactGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gap-medium);
+}
+
+.contactCard {
+    text-align: center;
+    padding: var(--gap-large);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-small);
+}
+
+.contactIcon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 20px;
+}
+
+.contactIcon svg {
+    width: 100%;
+    height: 100%;
+    stroke: var(--color-secondary);
+}
+
+.contactCard h3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-body-large);
+    color: var(--color-text-on-dark);
+    margin-bottom: 15px;
+}
+
+.contactNumber {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    color: var(--color-text-on-dark);
+    margin-bottom: 10px;
+}
+
+.contactNote {
+    font-size: var(--text-small);
+    color: var(--color-text-on-dark-muted);
+}
+
+.contactLink {
+    display: inline-block;
+    font-size: var(--text-body);
+    color: var(--color-secondary);
+    text-decoration: underline;
+    margin-bottom: 10px;
+    transition: color var(--transition-fast);
+}
+
+.contactLink:hover {
+    color: var(--color-text-on-dark);
+}
+
+/* Preparation Section */
+.preparation {
+    padding: var(--section-padding) 20px;
+    background: var(--color-background-alt);
+}
+
+.prepGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gap-medium);
+}
+
+.prepCard {
+    background: var(--color-surface);
+    padding: var(--gap-large);
+    border-radius: var(--radius-small);
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+}
+
+.prepNumber {
+    font-size: var(--text-micro);
+    color: var(--color-primary);
+    letter-spacing: var(--letter-spacing-wide);
+    margin-bottom: 20px;
+}
+
+.prepCard h3 {
+    font-family: var(--font-heading);
+    font-size: var(--text-body-large);
+    color: var(--color-text);
+    margin-bottom: 15px;
+}
+
+.prepCard p {
+    font-size: var(--text-small);
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+/* CTA Section */
+.cta {
+    padding: var(--section-padding-small) 20px;
+    background: var(--color-surface);
+    text-align: center;
+}
+
+.ctaText {
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    color: var(--color-text);
+    margin-bottom: 40px;
+}
+
+.ctaButtons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .galleryGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .galleryItem:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .locationGrid {
+        grid-template-columns: 1fr;
+        gap: var(--gap-large);
+    }
+
+    .mapWrapper {
+        position: static;
+    }
+
+    .prepGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .galleryGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .galleryItem:first-child {
+        grid-column: span 1;
+    }
+
+    .hoursGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .contactGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .prepGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .ctaButtons {
+        flex-direction: column;
+        gap: 15px;
+    }
+}

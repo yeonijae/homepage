@@ -1,33 +1,130 @@
+/* ===================================
+   연이재한의원 - Global Styles
+   Based on yonyejae-brand.json theme
+   =================================== */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
+
+/* CSS Variables - Theme Tokens */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors */
+  --color-primary: #8B7355;
+  --color-primary-dark: #6B5344;
+  --color-primary-light: #A69580;
+  --color-secondary: #C4A77D;
+  --color-accent: #5C4A3D;
+
+  --color-background: #FAF8F5;
+  --color-background-alt: #F5F0E8;
+  --color-background-dark: #F0EBE3;
+  --color-background-darker: #E8E2D8;
+
+  --color-surface: #FFFFFF;
+  --color-surface-dark: #3D3D3D;
+  --color-surface-accent: #4A3C32;
+
+  --color-text: #3D3D3D;
+  --color-text-light: #6B6B6B;
+  --color-text-lighter: #7A7A7A;
+  --color-text-muted: #A69580;
+  --color-text-on-dark: #FAF8F5;
+  --color-text-on-dark-muted: #D4C4B0;
+  --color-text-on-dark-subtle: #B0A090;
+
+  --color-border: #C4A77D;
+
+  /* Typography */
+  --font-heading: 'Gowun Batang', serif;
+  --font-body: 'Noto Serif KR', Georgia, serif;
+
+  --text-hero: clamp(32px, 8vw, 72px);
+  --text-h1: clamp(28px, 5vw, 42px);
+  --text-h2: clamp(26px, 4vw, 38px);
+  --text-h3: 24px;
+  --text-body: 15px;
+  --text-body-large: 17px;
+  --text-small: 14px;
+  --text-tiny: 13px;
+  --text-micro: 11px;
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+
+  --line-height-heading: 1.3;
+  --line-height-body: 2.2;
+  --line-height-relaxed: 2.4;
+
+  --letter-spacing-tight: 1px;
+  --letter-spacing-normal: 2px;
+  --letter-spacing-wide: 4px;
+  --letter-spacing-wider: 6px;
+  --letter-spacing-widest: 8px;
+
+  /* Spacing */
+  --section-padding: 150px;
+  --section-padding-small: 120px;
+  --container-max-width: 1100px;
+  --content-max-width: 900px;
+  --text-max-width: 600px;
+
+  --gap-small: 20px;
+  --gap-medium: 40px;
+  --gap-large: 60px;
+  --gap-xlarge: 80px;
+
+  /* Effects */
+  --radius-small: 4px;
+  --radius-medium: 8px;
+  --radius-large: 16px;
+  --radius-full: 50%;
+
+  --shadow-soft: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-medium: 0 10px 30px rgba(107, 83, 68, 0.3);
+  --shadow-large: 0 30px 60px rgba(92, 74, 61, 0.1);
+
+  --gradient-hero: linear-gradient(180deg, #FAF8F5 0%, #F5F0E8 100%);
+  --gradient-section: linear-gradient(180deg, #F0EBE3 0%, #E8E2D8 100%);
+  --gradient-dark: linear-gradient(180deg, #5C4A3D 0%, #4A3C32 100%);
+  --gradient-button: linear-gradient(135deg, #8B7355 0%, #6B5344 100%);
+  --gradient-divider: linear-gradient(90deg, transparent, #C4A77D, transparent);
+
+  --transition-fast: 0.3s ease;
+  --transition-medium: 0.4s ease;
+  --transition-slow: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --blur-nav: blur(10px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html,
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  max-width: 100vw;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-body);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  min-height: 100vh;
   overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+::selection {
+  background: var(--color-secondary);
+  color: white;
 }
 
 a {
@@ -35,8 +132,245 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-heading);
+}
+
+h1 {
+  font-size: var(--text-h1);
+}
+
+h2 {
+  font-size: var(--text-h2);
+}
+
+h3 {
+  font-size: var(--text-h3);
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-hero);
+}
+
+/* Container */
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.container--narrow {
+  max-width: var(--content-max-width);
+}
+
+.container--text {
+  max-width: var(--text-max-width);
+}
+
+/* Section */
+.section {
+  padding: var(--section-padding) 20px;
+}
+
+.section--small {
+  padding: var(--section-padding-small) 20px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 16px 40px;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  letter-spacing: var(--letter-spacing-normal);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--primary {
+  background: var(--gradient-button);
+  color: var(--color-text-on-dark);
+}
+
+.btn--primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn--primary:hover::before {
+  left: 100%;
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn--outline {
+  background: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn--outline:hover {
+  background: var(--color-primary);
+  color: var(--color-text-on-dark);
+}
+
+/* Section Label */
+.section-label {
+  font-size: var(--text-tiny);
+  letter-spacing: var(--letter-spacing-wider);
+  color: var(--color-primary);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* Divider */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--gradient-divider);
+  margin: 0 auto;
+}
+
+/* Cards */
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-small);
+  padding: 30px 40px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+.pulse-soft {
+  animation: pulseSoft 3s ease-in-out infinite;
+}
+
+/* Scroll Animation */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all var(--transition-slow);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Brush Stroke Effect */
+.brush-stroke {
+  position: relative;
+}
+
+.brush-stroke::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -5%;
+  width: 110%;
+  height: 40%;
+  background: linear-gradient(90deg, transparent, rgba(196, 167, 125, 0.3), transparent);
+  z-index: -1;
+  transform: skewX(-5deg);
+}
+
+/* Grain Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.03;
+  z-index: 1000;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Nav Link Animation */
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-primary);
+  transition: width var(--transition-fast);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Vertical Text */
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 80px;
+    --section-padding-small: 60px;
+    --gap-large: 40px;
+    --gap-xlarge: 60px;
+  }
+
+  .hide-mobile {
+    display: none !important;
   }
 }

@@ -1,0 +1,276 @@
+/* ===================================
+   Admin Layout Styles - Light Theme
+   =================================== */
+
+/* Container */
+.adminContainer {
+    display: flex;
+    min-height: 100vh;
+    background: #f5f7fa;
+    /* 시스템 기본 폰트로 가독성 향상 */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    z-index: 100;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
+}
+
+.logo {
+    padding: 24px 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.logo a {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.logoText {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: #1f2937;
+}
+
+.logoSub {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Navigation */
+.nav {
+    flex: 1;
+    padding: 20px 0;
+    overflow-y: auto;
+}
+
+.navSection {
+    margin-bottom: 24px;
+}
+
+.navLabel {
+    display: block;
+    padding: 0 20px;
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #9ca3af;
+    font-weight: 600;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    color: #6b7280;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.navItem:hover {
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+.navIcon {
+    font-size: 1.1rem;
+}
+
+.navText {
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+.navBadge {
+    background: #ef4444;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+/* User Section */
+.userSection {
+    padding: 16px 20px;
+    border-top: 1px solid #e5e7eb;
+    background: #fafbfc;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.userAvatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.userDetails {
+    display: flex;
+    flex-direction: column;
+}
+
+.userName {
+    color: #1f2937;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.userRole {
+    color: #9ca3af;
+    font-size: 0.75rem;
+}
+
+/* Main Content */
+.main {
+    flex: 1;
+    margin-left: 260px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.headerLeft {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.headerTitle {
+    color: #1f2937;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.headerRight {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.notificationBtn {
+    position: relative;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.notificationBtn:hover {
+    background: #f3f4f6;
+}
+
+.notificationBadge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: #ef4444;
+    color: white;
+    font-size: 0.6rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.siteLink {
+    color: #3b82f6;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+}
+
+.siteLink:hover {
+    color: #2563eb;
+}
+
+/* Content Area */
+.content {
+    flex: 1;
+    padding: 32px;
+    background: #f5f7fa;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 80px;
+    }
+
+    .logoSub,
+    .navLabel,
+    .navText,
+    .userDetails {
+        display: none;
+    }
+
+    .navItem {
+        justify-content: center;
+        padding: 16px;
+    }
+
+    .navIcon {
+        font-size: 1.3rem;
+    }
+
+    .main {
+        margin-left: 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        margin-left: 0;
+    }
+}

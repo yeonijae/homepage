@@ -1,0 +1,364 @@
+/* ===================================
+   Messenger Page Styles - Light Theme
+   =================================== */
+
+.messengerPage {
+    display: flex;
+    height: calc(100vh - 120px);
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Conversation List */
+.conversationList {
+    width: 360px;
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+}
+
+.listHeader {
+    padding: 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.listHeader h2 {
+    color: #1f2937;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.filterTabs {
+    display: flex;
+    gap: 8px;
+}
+
+.filterTab {
+    background: #f3f4f6;
+    border: none;
+    color: #6b7280;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filterTab:hover {
+    background: #e5e7eb;
+}
+
+.filterTab.active {
+    background: #3b82f6;
+    color: white;
+}
+
+.listContent {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.conversationItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f3f4f6;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+}
+
+.conversationItem:hover {
+    background: #f9fafb;
+}
+
+.conversationItem.selected {
+    background: #eff6ff;
+    border-left: 3px solid #3b82f6;
+}
+
+.convAvatar {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.convInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.convHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.convName {
+    color: #1f2937;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.convTime {
+    color: #9ca3af;
+    font-size: 0.75rem;
+}
+
+.convCondition {
+    color: #3b82f6;
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.convMessage {
+    color: #6b7280;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.unreadBadge {
+    background: #ef4444;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Chat Area */
+.chatArea {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #fafbfc;
+}
+
+.chatHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid #e5e7eb;
+    background: #ffffff;
+}
+
+.chatUserInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.chatAvatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+}
+
+.chatUserName {
+    color: #1f2937;
+    font-size: 1rem;
+    font-weight: 500;
+    display: block;
+}
+
+.chatCondition {
+    color: #6b7280;
+    font-size: 0.8rem;
+}
+
+.chatActions {
+    display: flex;
+    gap: 8px;
+}
+
+.chatActionBtn {
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    color: #6b7280;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.chatActionBtn:hover {
+    background: #e5e7eb;
+    color: #1f2937;
+}
+
+/* Messages Area */
+.messagesArea {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.message {
+    display: flex;
+    flex-direction: column;
+    max-width: 70%;
+}
+
+.message.received {
+    align-self: flex-start;
+}
+
+.message.sent {
+    align-self: flex-end;
+}
+
+.messageBubble {
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.message.received .messageBubble {
+    background: #ffffff;
+    color: #1f2937;
+    border: 1px solid #e5e7eb;
+    border-bottom-left-radius: 4px;
+}
+
+.message.sent .messageBubble {
+    background: #3b82f6;
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.messageTime {
+    color: #9ca3af;
+    font-size: 0.7rem;
+    margin-top: 4px;
+}
+
+.message.received .messageTime {
+    margin-left: 4px;
+}
+
+.message.sent .messageTime {
+    margin-right: 4px;
+    text-align: right;
+}
+
+/* Input Area */
+.inputArea {
+    display: flex;
+    gap: 12px;
+    padding: 16px 24px;
+    border-top: 1px solid #e5e7eb;
+    background: #ffffff;
+}
+
+.messageInput {
+    flex: 1;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    color: #1f2937;
+    padding: 14px 20px;
+    border-radius: 24px;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.messageInput:focus {
+    border-color: #3b82f6;
+    background: #ffffff;
+}
+
+.messageInput::placeholder {
+    color: #9ca3af;
+}
+
+.sendBtn {
+    background: #3b82f6;
+    border: none;
+    color: white;
+    padding: 14px 24px;
+    border-radius: 24px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.sendBtn:hover:not(:disabled) {
+    background: #2563eb;
+}
+
+.sendBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Empty State */
+.emptyChat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+}
+
+.emptyChatIcon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .conversationList {
+        width: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .messengerPage {
+        flex-direction: column;
+    }
+
+    .conversationList {
+        width: 100%;
+        max-height: 40%;
+    }
+
+    .chatArea {
+        height: 60%;
+    }
+}
