@@ -123,16 +123,54 @@ export default function AdminGalleryPage() {
         }
     };
 
-    // 파일 업로드 처리
+    // 파일 업로드 처리 (이미지 리사이즈)
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setUploadPreview(reader.result as string);
-            };
-            reader.readAsDataURL(file);
+        if (!file) return;
+
+        // 파일 크기 체크 (5MB 제한)
+        if (file.size > 5 * 1024 * 1024) {
+            alert('이미지 크기는 5MB 이하여야 합니다.');
+            return;
         }
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const img = new window.Image();
+            img.onload = () => {
+                // Canvas로 리사이즈
+                const canvas = document.createElement('canvas');
+                const MAX_WIDTH = 1200;
+                const MAX_HEIGHT = 800;
+
+                let width = img.width;
+                let height = img.height;
+
+                // 비율 유지하며 리사이즈
+                if (width > height) {
+                    if (width > MAX_WIDTH) {
+                        height = (height * MAX_WIDTH) / width;
+                        width = MAX_WIDTH;
+                    }
+                } else {
+                    if (height > MAX_HEIGHT) {
+                        width = (width * MAX_HEIGHT) / height;
+                        height = MAX_HEIGHT;
+                    }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx?.drawImage(img, 0, 0, width, height);
+
+                // JPEG 압축 (품질 80%)
+                const resizedDataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                setUploadPreview(resizedDataUrl);
+            };
+            img.src = event.target?.result as string;
+        };
+        reader.readAsDataURL(file);
     };
 
     // 이미지 추가
