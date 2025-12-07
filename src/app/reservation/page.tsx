@@ -4,6 +4,35 @@ import { useState } from 'react';
 import Navigation from "@/components/common/Navigation";
 import Footer from "@/components/common/Footer";
 import styles from "./page.module.css";
+import conditionsData from '@data/conditions/index.json';
+import { CATEGORY_META, ConditionCategory } from '@/lib/conditions';
+
+// 카테고리별로 질환 그룹화
+const groupedConditions = conditionsData.conditions.reduce((acc, condition) => {
+    const category = condition.category;
+    if (!acc[category]) {
+        acc[category] = [];
+    }
+    // 클러스터가 아니거나 클러스터 허브인 경우만 추가
+    if (!condition.cluster || condition.isClusterHub) {
+        acc[category].push(condition);
+    }
+    return acc;
+}, {} as Record<string, typeof conditionsData.conditions>);
+
+// 카테고리 순서
+const CATEGORY_ORDER: ConditionCategory[] = [
+    'womens-health',
+    'infertility',
+    'postpartum',
+    'pediatric',
+    'skin',
+    'digestive',
+    'urology',
+    'neuro',
+    'diet',
+    'traffic'
+];
 
 export default function ReservationPage() {
     const [formData, setFormData] = useState({
@@ -214,26 +243,22 @@ export default function ReservationPage() {
                                         onChange={handleChange}
                                     >
                                         <option value="">선택해주세요</option>
-                                        <optgroup label="여성 질환">
-                                            <option value="pcos">다낭성난소증후군</option>
-                                            <option value="menstrual">생리불순 / 생리통</option>
-                                            <option value="infertility">난임</option>
-                                            <option value="menopause">갱년기</option>
-                                        </optgroup>
-                                        <optgroup label="소화기 질환">
-                                            <option value="gerd">역류성 식도염</option>
-                                            <option value="ibs">과민성 대장증후군</option>
-                                            <option value="indigestion">소화불량</option>
-                                        </optgroup>
-                                        <optgroup label="피부 질환">
-                                            <option value="atopy">아토피</option>
-                                            <option value="acne">여드름</option>
-                                        </optgroup>
-                                        <optgroup label="기타">
-                                            <option value="fatigue">만성 피로</option>
-                                            <option value="insomnia">불면증</option>
-                                            <option value="other">기타</option>
-                                        </optgroup>
+                                        {CATEGORY_ORDER.map(categoryKey => {
+                                            const conditions = groupedConditions[categoryKey];
+                                            const categoryMeta = CATEGORY_META[categoryKey];
+
+                                            if (!conditions || conditions.length === 0) return null;
+
+                                            return (
+                                                <optgroup key={categoryKey} label={categoryMeta.name}>
+                                                    {conditions.map(condition => (
+                                                        <option key={condition.slug} value={condition.slug}>
+                                                            {condition.name}
+                                                        </option>
+                                                    ))}
+                                                </optgroup>
+                                            );
+                                        })}
                                     </select>
                                 </div>
 
