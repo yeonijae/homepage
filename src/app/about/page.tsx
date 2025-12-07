@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Navigation from "@/components/common/Navigation";
 import Footer from "@/components/common/Footer";
 import styles from "./page.module.css";
@@ -158,9 +159,9 @@ export default function AboutPage() {
                     <p className={styles.ctaText}>
                         진정한 진료를 경험하고 싶으신가요?
                     </p>
-                    <button className="btn btn--primary">
+                    <Link href="/reservation" className="btn btn--primary">
                         진료 예약하기
-                    </button>
+                    </Link>
                 </div>
             </section>
 

@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Navigation from "@/components/common/Navigation";
 import Footer from "@/components/common/Footer";
 import styles from "./page.module.css";
@@ -194,9 +195,9 @@ export default function PhilosophyPage() {
                         눌러봐야 보이는 것들,<br />
                         연이재에서 확인하세요
                     </p>
-                    <button className="btn btn--primary">
+                    <Link href="/reservation" className="btn btn--primary">
                         진료 예약하기
-                    </button>
+                    </Link>
                 </div>
             </section>
 

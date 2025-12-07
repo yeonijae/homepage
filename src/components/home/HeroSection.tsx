@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './HeroSection.module.css';
 
 export default function HeroSection() {
@@ -32,9 +33,9 @@ export default function HeroSection() {
             </div>
 
             <div className="animate-on-scroll" style={{ transitionDelay: '0.6s' }}>
-                <button className="btn btn--primary" style={{ marginTop: '50px' }}>
+                <Link href="/reservation" className="btn btn--primary" style={{ marginTop: '50px' }}>
                     진료 예약하기
-                </button>
+                </Link>
             </div>
 
             {/* Scroll indicator */}
@@ -45,3 +46,4 @@ export default function HeroSection() {
         </section>
     );
 }
+
