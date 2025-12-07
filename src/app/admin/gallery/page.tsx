@@ -123,39 +123,75 @@ export default function AdminGalleryPage() {
         }
     };
 
+    // 상태에 파일 객체 추가
+    const [uploadFile, setUploadFile] = useState<File | null>(null);
+    const [isUploading, setIsUploading] = useState(false);
+
     // 파일 업로드 처리
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (!file) return;
 
-        // 파일 크기 체크 (500KB 제한 - Base64 인코딩 시 약 30% 증가)
-        const maxSize = 500 * 1024; // 500KB
+        // 파일 크기 체크 (10MB 제한)
+        const maxSize = 10 * 1024 * 1024;
         if (file.size > maxSize) {
-            alert(`이미지 크기가 너무 큽니다.\n\n현재: ${(file.size / 1024).toFixed(0)}KB\n제한: 500KB\n\n더 작은 이미지를 사용하거나 이미지 압축 후 업로드해주세요.`);
+            alert(`이미지 크기가 너무 큽니다.\n\n현재: ${(file.size / 1024 / 1024).toFixed(1)}MB\n제한: 10MB`);
             return;
         }
 
+        // 허용된 파일 타입
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+        if (!allowedTypes.includes(file.type)) {
+            alert('JPG, PNG, GIF, WebP 형식만 지원됩니다.');
+            return;
+        }
+
+        // 미리보기 생성
         const reader = new FileReader();
         reader.onloadend = () => {
             setUploadPreview(reader.result as string);
         };
         reader.readAsDataURL(file);
+
+        // 파일 객체 저장
+        setUploadFile(file);
     };
 
     // 이미지 추가
     const addImage = async () => {
-        if (!uploadPreview || !newImageData.caption) {
+        if (!uploadFile || !newImageData.caption) {
             return;
         }
 
+        setIsUploading(true);
+
         try {
+            // 1. Storage에 이미지 업로드
+            const formData = new FormData();
+            formData.append('file', uploadFile);
+
+            const uploadResponse = await fetch('/api/upload', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (!uploadResponse.ok) {
+                const uploadResult = await uploadResponse.json();
+                alert(uploadResult.error || '이미지 업로드에 실패했습니다.');
+                setIsUploading(false);
+                return;
+            }
+
+            const { url } = await uploadResponse.json();
+
+            // 2. 갤러리 DB에 등록
             const response = await fetch('/api/gallery', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    src: uploadPreview, // Base64 이미지
+                    src: url, // Storage URL
                     alt: newImageData.alt || newImageData.caption,
                     caption: newImageData.caption,
                     displayOrder: images.length,
@@ -173,6 +209,7 @@ export default function AdminGalleryPage() {
                 }]);
                 setShowUploadModal(false);
                 setUploadPreview(null);
+                setUploadFile(null);
                 setNewImageData({ caption: '', alt: '' });
                 alert('이미지가 추가되었습니다.');
             } else {
@@ -182,6 +219,8 @@ export default function AdminGalleryPage() {
         } catch (error) {
             console.error('Failed to add image:', error);
             alert('이미지 추가에 실패했습니다.');
+        } finally {
+            setIsUploading(false);
         }
     };
 
@@ -359,10 +398,10 @@ export default function AdminGalleryPage() {
                             </button>
                             <button
                                 onClick={addImage}
-                                disabled={!uploadPreview || !newImageData.caption}
+                                disabled={!uploadFile || !newImageData.caption || isUploading}
                                 className={styles.submitBtn}
                             >
-                                추가하기
+                                {isUploading ? '업로드 중...' : '추가하기'}
                             </button>
                         </div>
                     </div>
