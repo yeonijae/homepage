@@ -76,6 +76,46 @@
     border-bottom: 1px solid var(--color-background-dark);
 }
 
+/* 모바일 스크롤 힌트 - 데스크톱에서 숨김 */
+.scrollHint {
+    display: none;
+    text-align: center;
+    font-size: 12px;
+    color: var(--color-text-muted);
+    margin-bottom: 10px;
+    animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* 스크롤 가능 영역 래퍼 */
+.categoryNavWrapper {
+    position: relative;
+}
+
+/* 오른쪽 페이드 효과 - 모바일에서만 */
+.categoryNavWrapper::after {
+    display: none;
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(to right, transparent, var(--color-surface));
+    pointer-events: none;
+}
+
 .categoryNav {
     display: flex;
     flex-direction: column;
@@ -266,6 +306,16 @@
 
     .sidebarTitle {
         display: none;
+    }
+
+    /* 모바일에서 스크롤 힌트 표시 */
+    .scrollHint {
+        display: block;
+    }
+
+    /* 모바일에서 페이드 효과 표시 */
+    .categoryNavWrapper::after {
+        display: block;
     }
 
     .categoryNav {

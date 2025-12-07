@@ -79,24 +79,30 @@ export default function ConditionsPage() {
                 {/* Left Sidebar - Categories */}
                 <aside className={styles.sidebar}>
                     <h2 className={styles.sidebarTitle}>카테고리</h2>
-                    <nav className={styles.categoryNav}>
-                        {CATEGORY_ORDER.map(categoryKey => {
-                            const meta = CATEGORY_META[categoryKey];
-                            const count = (grouped[categoryKey] || []).filter(c => !c.cluster || c.isClusterHub).length;
-                            const isActive = activeCategory === categoryKey;
 
-                            return (
-                                <button
-                                    key={categoryKey}
-                                    className={`${styles.categoryBtn} ${isActive ? styles.categoryActive : ''}`}
-                                    onClick={() => handleCategoryClick(categoryKey)}
-                                >
-                                    <span className={styles.categoryName}>{meta.name}</span>
-                                    <span className={styles.categoryCount}>{count}</span>
-                                </button>
-                            );
-                        })}
-                    </nav>
+                    {/* 모바일 스크롤 힌트 */}
+                    <p className={styles.scrollHint}>← 좌우로 밀어서 더 보기 →</p>
+
+                    <div className={styles.categoryNavWrapper}>
+                        <nav className={styles.categoryNav}>
+                            {CATEGORY_ORDER.map(categoryKey => {
+                                const meta = CATEGORY_META[categoryKey];
+                                const count = (grouped[categoryKey] || []).filter(c => !c.cluster || c.isClusterHub).length;
+                                const isActive = activeCategory === categoryKey;
+
+                                return (
+                                    <button
+                                        key={categoryKey}
+                                        className={`${styles.categoryBtn} ${isActive ? styles.categoryActive : ''}`}
+                                        onClick={() => handleCategoryClick(categoryKey)}
+                                    >
+                                        <span className={styles.categoryName}>{meta.name}</span>
+                                        <span className={styles.categoryCount}>{count}</span>
+                                    </button>
+                                );
+                            })}
+                        </nav>
+                    </div>
                 </aside>
 
                 {/* Right Content - Conditions */}
