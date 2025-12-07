@@ -308,42 +308,40 @@
         display: none;
     }
 
-    /* 모바일에서 스크롤 힌트 표시 */
+    /* 모바일에서 스크롤 힌트 숨김 (2단 그리드로 변경) */
     .scrollHint {
-        display: block;
-    }
-
-    /* 모바일에서 페이드 효과 표시 */
-    .categoryNavWrapper::after {
-        display: block;
-    }
-
-    .categoryNav {
-        flex-direction: row;
-        overflow-x: auto;
-        padding: 0 15px;
-        gap: 8px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-
-    .categoryNav::-webkit-scrollbar {
         display: none;
+    }
+
+    /* 모바일에서 페이드 효과 숨김 */
+    .categoryNavWrapper::after {
+        display: none;
+    }
+
+    /* 2단 그리드 레이아웃 */
+    .categoryNav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 0 15px;
     }
 
     .categoryBtn {
         flex-shrink: 0;
-        padding: 10px 16px;
+        padding: 14px 12px;
         border: 1px solid var(--color-background-dark);
-        border-radius: 25px;
+        border-radius: 8px;
         border-left-width: 1px;
         font-size: 14px;
+        justify-content: center;
+        text-align: center;
     }
 
     .categoryActive {
         background: var(--color-primary);
         border-color: var(--color-primary);
         color: var(--color-text-on-dark);
+        font-weight: 500;
     }
 
     .categoryCount {
