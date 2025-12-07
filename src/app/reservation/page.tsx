@@ -33,12 +33,34 @@ export default function ReservationPage() {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // 실제 구현 시 API 호출
-        // 현재는 시뮬레이션
-        setTimeout(() => {
+        try {
+            const response = await fetch('/api/reservations', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    phone: formData.phone,
+                    email: formData.email,
+                    conditionType: formData.symptoms,
+                    preferredDate: formData.preferredDate,
+                    preferredTime: formData.preferredTime,
+                    message: formData.message,
+                }),
+            });
+
+            if (response.ok) {
+                setSubmitStatus('success');
+            } else {
+                setSubmitStatus('error');
+            }
+        } catch (error) {
+            console.error('Reservation error:', error);
+            setSubmitStatus('error');
+        } finally {
             setIsSubmitting(false);
-            setSubmitStatus('success');
-        }, 1500);
+        }
     };
 
     if (submitStatus === 'success') {
