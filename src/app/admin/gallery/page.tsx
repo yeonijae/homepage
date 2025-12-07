@@ -1,20 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './page.module.css';
-
-// 초기 갤러리 데이터 (실제로는 API에서 로드)
-const INITIAL_GALLERY = [
-    { id: '1', src: '/images/clinic/entrance.jpg', alt: '한의원 입구', caption: '연이재 입구', order: 1 },
-    { id: '2', src: '/images/clinic/lobby.jpg', alt: '로비 및 대기실', caption: '로비', order: 2 },
-    { id: '3', src: '/images/clinic/waiting-area.jpg', alt: '대기 공간', caption: '대기실', order: 3 },
-    { id: '4', src: '/images/clinic/reception.jpg', alt: '접수대', caption: '접수대', order: 4 },
-    { id: '5', src: '/images/clinic/consultation-room.jpg', alt: '진료실', caption: '진료실', order: 5 },
-    { id: '6', src: '/images/clinic/consultation-room-2.jpg', alt: '상담실', caption: '상담실', order: 6 },
-    { id: '7', src: '/images/clinic/treatment-room.jpg', alt: '치료실', caption: '치료실', order: 7 },
-    { id: '8', src: '/images/clinic/detail.jpg', alt: '인테리어 디테일', caption: '디테일', order: 8 },
-];
 
 interface GalleryImage {
     id: string;
@@ -25,12 +13,48 @@ interface GalleryImage {
 }
 
 export default function AdminGalleryPage() {
-    const [images, setImages] = useState<GalleryImage[]>(INITIAL_GALLERY);
+    const [images, setImages] = useState<GalleryImage[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
     const [editingId, setEditingId] = useState<string | null>(null);
     const [editForm, setEditForm] = useState({ caption: '', alt: '' });
     const [showUploadModal, setShowUploadModal] = useState(false);
     const [uploadPreview, setUploadPreview] = useState<string | null>(null);
     const [newImageData, setNewImageData] = useState({ caption: '', alt: '' });
+
+    // 데이터 로드
+    useEffect(() => {
+        loadImages();
+    }, []);
+
+    const loadImages = async () => {
+        setIsLoading(true);
+        try {
+            const response = await fetch('/api/gallery');
+            if (response.ok) {
+                const { data } = await response.json();
+                // DB 데이터를 GalleryImage 형식으로 변환
+                const formattedImages: GalleryImage[] = data.map((img: {
+                    id: number;
+                    src: string;
+                    alt: string;
+                    caption: string;
+                    display_order: number;
+                }) => ({
+                    id: String(img.id),
+                    src: img.src,
+                    alt: img.alt || '',
+                    caption: img.caption || '',
+                    order: img.display_order || 0,
+                }));
+                setImages(formattedImages);
+            }
+        } catch (error) {
+            console.error('Failed to load images:', error);
+            alert('이미지를 불러오는데 실패했습니다.');
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     // 편집 시작
     const startEdit = (image: GalleryImage) => {
@@ -39,11 +63,18 @@ export default function AdminGalleryPage() {
     };
 
     // 편집 저장
-    const saveEdit = (id: string) => {
-        setImages(prev => prev.map(img =>
-            img.id === id ? { ...img, caption: editForm.caption, alt: editForm.alt } : img
-        ));
-        setEditingId(null);
+    const saveEdit = async (id: string) => {
+        try {
+            // TODO: PUT API 구현 시 연동
+            setImages(prev => prev.map(img =>
+                img.id === id ? { ...img, caption: editForm.caption, alt: editForm.alt } : img
+            ));
+            setEditingId(null);
+            alert('수정되었습니다. (현재는 임시 저장)');
+        } catch (error) {
+            console.error('Failed to save edit:', error);
+            alert('수정에 실패했습니다.');
+        }
     };
 
     // 편집 취소
@@ -53,9 +84,26 @@ export default function AdminGalleryPage() {
     };
 
     // 삭제
-    const deleteImage = (id: string) => {
-        if (confirm('정말 이 이미지를 삭제하시겠습니까?')) {
-            setImages(prev => prev.filter(img => img.id !== id));
+    const deleteImage = async (id: string) => {
+        if (!confirm('정말 이 이미지를 삭제하시겠습니까?')) {
+            return;
+        }
+
+        try {
+            const response = await fetch(`/api/gallery?id=${id}`, {
+                method: 'DELETE',
+            });
+
+            if (response.ok) {
+                setImages(prev => prev.filter(img => img.id !== id));
+                alert('삭제되었습니다.');
+            } else {
+                const result = await response.json();
+                alert(result.error || '삭제에 실패했습니다.');
+            }
+        } catch (error) {
+            console.error('Failed to delete image:', error);
+            alert('삭제에 실패했습니다.');
         }
     };
 
@@ -66,10 +114,12 @@ export default function AdminGalleryPage() {
             const newImages = [...images];
             [newImages[index - 1], newImages[index]] = [newImages[index], newImages[index - 1]];
             setImages(newImages);
+            // TODO: 순서 변경 API 호출
         } else if (direction === 'down' && index < images.length - 1) {
             const newImages = [...images];
             [newImages[index], newImages[index + 1]] = [newImages[index + 1], newImages[index]];
             setImages(newImages);
+            // TODO: 순서 변경 API 호출
         }
     };
 
@@ -86,19 +136,45 @@ export default function AdminGalleryPage() {
     };
 
     // 이미지 추가
-    const addImage = () => {
-        if (uploadPreview && newImageData.caption) {
-            const newId = String(Date.now());
-            setImages(prev => [...prev, {
-                id: newId,
-                src: uploadPreview,
-                alt: newImageData.alt || newImageData.caption,
-                caption: newImageData.caption,
-                order: prev.length + 1
-            }]);
-            setShowUploadModal(false);
-            setUploadPreview(null);
-            setNewImageData({ caption: '', alt: '' });
+    const addImage = async () => {
+        if (!uploadPreview || !newImageData.caption) {
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/gallery', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    src: uploadPreview, // Base64 이미지
+                    alt: newImageData.alt || newImageData.caption,
+                    caption: newImageData.caption,
+                    displayOrder: images.length,
+                }),
+            });
+
+            if (response.ok) {
+                const { data } = await response.json();
+                setImages(prev => [...prev, {
+                    id: String(data.id),
+                    src: data.src,
+                    alt: data.alt,
+                    caption: data.caption,
+                    order: data.display_order,
+                }]);
+                setShowUploadModal(false);
+                setUploadPreview(null);
+                setNewImageData({ caption: '', alt: '' });
+                alert('이미지가 추가되었습니다.');
+            } else {
+                const result = await response.json();
+                alert(result.error || '이미지 추가에 실패했습니다.');
+            }
+        } catch (error) {
+            console.error('Failed to add image:', error);
+            alert('이미지 추가에 실패했습니다.');
         }
     };
 
@@ -119,92 +195,98 @@ export default function AdminGalleryPage() {
             </div>
 
             {/* 이미지 목록 */}
-            <div className={styles.imageGrid}>
-                {images.map((image, index) => (
-                    <div key={image.id} className={styles.imageCard}>
-                        <div className={styles.imagePreview}>
-                            <Image
-                                src={image.src}
-                                alt={image.alt}
-                                width={300}
-                                height={200}
-                                className={styles.image}
-                            />
-                            <div className={styles.imageOverlay}>
-                                <span className={styles.orderBadge}>{index + 1}</span>
+            {isLoading ? (
+                <div className={styles.loading}>
+                    <p>갤러리 이미지를 불러오는 중...</p>
+                </div>
+            ) : images.length === 0 ? (
+                <div className={styles.empty}>
+                    <p>등록된 이미지가 없습니다.</p>
+                    <p>+ 이미지 추가 버튼을 클릭하여 첫 이미지를 등록하세요.</p>
+                </div>
+            ) : (
+                <div className={styles.imageGrid}>
+                    {images.map((image, index) => (
+                        <div key={image.id} className={styles.imageCard}>
+                            <div className={styles.imagePreview}>
+                                <Image
+                                    src={image.src}
+                                    alt={image.alt}
+                                    width={300}
+                                    height={200}
+                                    className={styles.image}
+                                />
+                                <div className={styles.imageOverlay}>
+                                    <span className={styles.orderBadge}>{index + 1}</span>
+                                </div>
+                            </div>
+
+                            <div className={styles.imageInfo}>
+                                {editingId === image.id ? (
+                                    <div className={styles.editForm}>
+                                        <input
+                                            type="text"
+                                            value={editForm.caption}
+                                            onChange={(e) => setEditForm(prev => ({ ...prev, caption: e.target.value }))}
+                                            placeholder="캡션"
+                                            className={styles.input}
+                                        />
+                                        <input
+                                            type="text"
+                                            value={editForm.alt}
+                                            onChange={(e) => setEditForm(prev => ({ ...prev, alt: e.target.value }))}
+                                            placeholder="대체 텍스트"
+                                            className={styles.input}
+                                        />
+                                        <div className={styles.editActions}>
+                                            <button onClick={() => saveEdit(image.id)} className={styles.saveBtn}>저장</button>
+                                            <button onClick={cancelEdit} className={styles.cancelBtn}>취소</button>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <h3 className={styles.caption}>{image.caption}</h3>
+                                        <p className={styles.alt}>{image.alt}</p>
+                                    </>
+                                )}
+                            </div>
+
+                            <div className={styles.imageActions}>
+                                <button
+                                    onClick={() => moveImage(image.id, 'up')}
+                                    disabled={index === 0}
+                                    className={styles.moveBtn}
+                                    title="위로"
+                                >
+                                    ↑
+                                </button>
+                                <button
+                                    onClick={() => moveImage(image.id, 'down')}
+                                    disabled={index === images.length - 1}
+                                    className={styles.moveBtn}
+                                    title="아래로"
+                                >
+                                    ↓
+                                </button>
+                                <button
+                                    onClick={() => startEdit(image)}
+                                    className={styles.editBtn}
+                                    title="편집"
+                                >
+                                    ✏️
+                                </button>
+                                <button
+                                    onClick={() => deleteImage(image.id)}
+                                    className={styles.deleteBtn}
+                                    title="삭제"
+                                >
+                                    🗑️
+                                </button>
                             </div>
                         </div>
-
-                        <div className={styles.imageInfo}>
-                            {editingId === image.id ? (
-                                <div className={styles.editForm}>
-                                    <input
-                                        type="text"
-                                        value={editForm.caption}
-                                        onChange={(e) => setEditForm(prev => ({ ...prev, caption: e.target.value }))}
-                                        placeholder="캡션"
-                                        className={styles.input}
-                                    />
-                                    <input
-                                        type="text"
-                                        value={editForm.alt}
-                                        onChange={(e) => setEditForm(prev => ({ ...prev, alt: e.target.value }))}
-                                        placeholder="대체 텍스트"
-                                        className={styles.input}
-                                    />
-                                    <div className={styles.editActions}>
-                                        <button onClick={() => saveEdit(image.id)} className={styles.saveBtn}>저장</button>
-                                        <button onClick={cancelEdit} className={styles.cancelBtn}>취소</button>
-                                    </div>
-                                </div>
-                            ) : (
-                                <>
-                                    <h3 className={styles.caption}>{image.caption}</h3>
-                                    <p className={styles.alt}>{image.alt}</p>
-                                </>
-                            )}
-                        </div>
-
-                        <div className={styles.imageActions}>
-                            <button
-                                onClick={() => moveImage(image.id, 'up')}
-                                disabled={index === 0}
-                                className={styles.moveBtn}
-                                title="위로"
-                            >
-                                ↑
-                            </button>
-                            <button
-                                onClick={() => moveImage(image.id, 'down')}
-                                disabled={index === images.length - 1}
-                                className={styles.moveBtn}
-                                title="아래로"
-                            >
-                                ↓
-                            </button>
-                            <button
-                                onClick={() => startEdit(image)}
-                                className={styles.editBtn}
-                                title="편집"
-                            >
-                                ✏️
-                            </button>
-                            <button
-                                onClick={() => deleteImage(image.id)}
-                                className={styles.deleteBtn}
-                                title="삭제"
-                            >
-                                🗑️
-                            </button>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            {/* 저장 안내 */}
-            <div className={styles.saveNotice}>
-                <p>💡 변경사항은 현재 세션에서만 유지됩니다. Supabase 연동 후 영구 저장이 가능합니다.</p>
-            </div>
+                    ))}
+                </div>
+            )}
 
             {/* 업로드 모달 */}
             {showUploadModal && (
